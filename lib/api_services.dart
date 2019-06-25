@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:io';
 
 
-Future<List<Events>> getEventsList() async{
+Future<List<Event>> getEventsList() async{
 
   String url = "https://flutterevents.com/feed";
 
