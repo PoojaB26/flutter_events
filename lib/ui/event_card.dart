@@ -31,7 +31,7 @@ class _EventCardState extends State<EventCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(widget.event.eventName),
-                  Text(widget.event.city)
+                  Text(widget.event.city??"")
                 ],
               ),
             ),
