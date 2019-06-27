@@ -12,11 +12,6 @@ class EventCard extends StatefulWidget {
 
 class _EventCardState extends State<EventCard> {
 
-  var favouriteButton = IconButton(
-    onPressed: (){},
-    icon: Icon(Icons.favorite_border),
-  );
-
   @override
   Widget build(BuildContext context) {
     print('event : ${widget.event.city}');
@@ -24,18 +19,11 @@ class _EventCardState extends State<EventCard> {
       margin: EdgeInsets.all(10.0),
       child: Card(child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(widget.event.eventName),
-                  Text(widget.event.city??"")
-                ],
-              ),
-            ),
-            favouriteButton,
+            Text(widget.event.eventName),
+            Text(widget.event.city??"")
           ],
         )
       )),

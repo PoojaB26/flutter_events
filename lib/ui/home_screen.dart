@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_events/ui/events_list_screen.dart';
-import 'package:flutter_events/ui/favourites_screen.dart';
+import 'package:flutter_events/ui/global_events_screen.dart';
+import 'package:flutter_events/ui/local_events_screen.dart';
 
 
 class HomeScreen extends StatelessWidget {
