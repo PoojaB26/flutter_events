@@ -14,7 +14,6 @@ class _EventCardState extends State<EventCard> {
 
   @override
   Widget build(BuildContext context) {
-    print('event : ${widget.event.city}');
     return Container(
       margin: EdgeInsets.all(10.0),
       child: Card(child: Padding(
