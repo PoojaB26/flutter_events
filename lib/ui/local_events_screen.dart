@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_events/event_card.dart';
+import 'package:flutter_events/ui/event_card.dart';
 
-class GlobalEventsScreen extends StatelessWidget {
+class LocalEventsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
