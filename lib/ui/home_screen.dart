@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
                 unselectedLabelStyle:
                 TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                 indicatorColor: Colors.yellow,
-                tabs: [Tab(text: 'Upcoming'), Tab(text: 'Favorites')],
+                tabs: [Tab(text: 'Upcoming'), Tab(text: 'Local')],
               ),
             ),
             body: TabBarView(
