@@ -19,7 +19,7 @@ class GlobalEventsScreen extends StatelessWidget {
                 ));
 
           }
-          else return CircularProgressIndicator();
+          else return Center(child: CircularProgressIndicator());
         }
       ),
     );
