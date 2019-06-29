@@ -8,7 +8,7 @@ class LocalEventsScreen extends StatelessWidget {
       child: ListView.builder(
 
           itemCount: 4,
-          itemBuilder: (context, index) => EventCard()),
+          itemBuilder: (context, index) => Container()),
     );
   }
 }
