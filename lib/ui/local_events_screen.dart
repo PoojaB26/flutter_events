@@ -19,7 +19,7 @@ class _LocalEventsScreenState extends State<LocalEventsScreen> {
   final FirestoreDatabase firestoreDatabase = new FirestoreDatabase();
 
   SharedPreferences sharedPreferences;
-  String selectedCity = 'Bangaluru';
+  String selectedCity = 'Bangalore';
   @override
   void initState() {
     initSharedPrefs();
@@ -114,15 +114,7 @@ class _LocalEventsScreenState extends State<LocalEventsScreen> {
                 controller: cityController,
               ),
               RaisedButton(
-                onPressed: () {
-                  if(cityController.toString().isNotEmpty){
-                    setState(() {
-                      selectedCity = cityController.text.toString();
-                      changeCity(selectedCity);
-                    });
-                  }
-                  Navigator.of(context).pop();
-                },
+                onPressed: () => onDialogButtonClicked(),
                 child: Text('OK'),
               )
             ],
@@ -131,5 +123,15 @@ class _LocalEventsScreenState extends State<LocalEventsScreen> {
       );
     }
     );
+  }
+
+  onDialogButtonClicked() {
+    if(cityController.toString().isNotEmpty){
+      setState(() {
+        selectedCity = cityController.text.toString();
+        changeCity(selectedCity);
+      });
+    }
+    Navigator.of(context).pop();
   }
 }
