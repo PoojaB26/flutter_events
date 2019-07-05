@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   navigate(){
-    Navigator.of(context).pushNamed('/home');
+    Navigator.of(context).pushReplacementNamed('/home');
   }
 
 

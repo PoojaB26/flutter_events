@@ -9,10 +9,11 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(20),
-      padding: EdgeInsets.all(20),
-
-      child: Text('Event: ${event.eventName}'),
+      margin: EdgeInsets.all(10),
+      child: Card(child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Text('Event: ${event.eventName}'),
+      )),
     );
   }
 }
