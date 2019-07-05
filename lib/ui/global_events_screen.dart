@@ -1,51 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_events/ui/list_card.dart';
+import 'package:flutter_events/model/event_model.dart';
 import 'package:flutter_events/services/api_services.dart';
-import 'package:flutter_events/model/events_model.dart';
-import 'package:flutter_events/services/firebase_methods.dart';
-import 'package:flutter_events/ui/event_card.dart';
+import 'package:flutter_events/services/firebase_services.dart';
 
-class EventListScreen extends StatefulWidget {
+class GlobalEventsScreen extends StatelessWidget {
+  final List<Event> events;
+  GlobalEventsScreen({this.events});
 
-//  final List<Event> events;
-//  EventListScreen({this.events});
-  @override
-  _EventListScreenState createState() => _EventListScreenState();
-}
-
-class _EventListScreenState extends State<EventListScreen> with AutomaticKeepAliveClientMixin {
-
-  FirestoreDatabase firestoreDatabase = new FirestoreDatabase();
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
+  final ApiResponse api = new ApiResponse();
+  final FirestoreDatabase firestoreDatabase = new FirestoreDatabase();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: FutureBuilder(
-        future: getEventsList(),
-        builder: (context, snapshot){
-          if(snapshot.hasData){
-            print(snapshot.data.length);
-            return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (context, index){
-//                  firestoreDatabase.storeNewEvent(snapshot.data[index], context);
-                  return EventCard(
-                    event: snapshot.data[index],
-                  );
-                });
-          }
-          else return Center(child: CircularProgressIndicator());
-        },
-      ),
+    return FutureBuilder<List<Event>>(
+      future: api.getEvents(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (context, index) => GestureDetector(
+                    onTap: () => firestoreDatabase.storeNewEvent(
+                        snapshot.data[index], context),
+                    child: EventCard(event: snapshot.data[index]),
+                  ));
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
-
-  @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
 }

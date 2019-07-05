@@ -1,14 +1,14 @@
 // To parse this JSON data, do
 //
-//     final events = eventsFromJson(jsonString);
+//     final event = eventFromJson(jsonString);
 
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-List<Event> eventsFromJson(String str) => new List<Event>.from(json.decode(str).map((x) => Event.fromJson(x)));
+List<Event> eventFromJson(String str) => new List<Event>.from(json.decode(str).map((x) => Event.fromJson(x)));
 
-String eventsToJson(List<Event> data) => json.encode(new List<dynamic>.from(data.map((x) => x.toJson())));
+String eventToJson(List<Event> data) => json.encode(new List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Event {
   String eventName;
@@ -21,9 +21,6 @@ class Event {
   String textMessage;
   String htmlMessage;
   String description;
-  Event.fromSnapshot(DocumentSnapshot snapshot)
-      : eventName = snapshot['eventName'],
-        city = snapshot['city'];
 
   Event({
     this.eventName,
@@ -38,6 +35,11 @@ class Event {
     this.description,
   });
 
+  Event.fromSnapshot(DocumentSnapshot snapshot)
+      : eventName = snapshot['eventName'],
+        city = snapshot['city'];
+
+
   factory Event.fromJson(Map<String, dynamic> json) => new Event(
     eventName: json["event_name"],
     eventUrl: json["event_url"],
@@ -48,20 +50,8 @@ class Event {
     longitude: json["longitude"].toDouble(),
     textMessage: json["text_message"],
     htmlMessage: json["html_message"],
-    description: json["description"] == null ? null : json["description"],
+    description: json["description"],
   );
-
-//   Event.fromSnapshot(DocumentSnapshot snapshot) :
-//
-//  Record.fromMap(Map<String, dynamic> map, {this.reference})
-//      : assert(map['name'] != null),
-//        assert(map['votes'] != null),
-//        name = map['name'],
-//        votes = map['votes'];
-//
-//  Record.fromSnapshot(DocumentSnapshot snapshot)
-//      : this.fromMap(snapshot.data, reference: snapshot.reference);
-
 
   Map<String, dynamic> toJson() => {
     "event_name": eventName,
@@ -73,6 +63,6 @@ class Event {
     "longitude": longitude,
     "text_message": textMessage,
     "html_message": htmlMessage,
-    "description": description == null ? null : description,
+    "description": description,
   };
 }

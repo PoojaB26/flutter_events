@@ -1,42 +1,39 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter_events/ui/home_screen.dart';
-
+import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
-
   @override
-  State<StatefulWidget> createState() {
-    return SplashScreenState();
-  }
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen> {
+
 
   @override
   void initState() {
+    loadTimer();
     super.initState();
-
-    loadData();
   }
 
-  Future<Timer> loadData() async {
-    return new Timer(Duration(seconds: 5), onDoneLoading);
+  Future<Timer> loadTimer() async {
+    return Timer(Duration(seconds: 3), navigate);
   }
 
-  onDoneLoading() async {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
+  navigate(){
+    Navigator.of(context).pushNamed('/home');
   }
+
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.deepPurple,
       body: Container(
-        padding: EdgeInsets.all(30),
+        padding: EdgeInsets.all(40),
         alignment: Alignment.center,
-          child: Image.network('https://itsallwidgets.com/images/logo.png')
+        child: Image.network('https://itsallwidgets.com/images/logo.png'),
       ),
     );
   }
