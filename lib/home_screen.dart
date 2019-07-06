@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_events/ui/global_events_screen.dart';
-import 'package:flutter_events/ui/local_events_screen.dart';
+import 'package:flutter_events/global_events_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -9,6 +8,7 @@ class HomeScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          title: Text('Flutter Events'),
           bottom: TabBar(
             tabs: [
               Tab(text: 'Global',),
@@ -18,8 +18,8 @@ class HomeScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: <Widget>[
-           GlobalEventsScreen(),
-            LocalEventsScreen()
+            GlobalEventsScreen(),
+            Text('Local'),
           ],
         ),
       ),

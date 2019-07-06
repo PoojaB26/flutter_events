@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_events/ui/home_screen.dart';
-import 'package:flutter_events/ui/splash_screen.dart';
+import 'package:flutter_events/splash_screen.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -13,9 +12,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
       ),
       home: SplashScreen(),
-      routes: {
-        '/home': (BuildContext context) => HomeScreen()
-      },
     );
   }
 }
